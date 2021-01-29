@@ -36,17 +36,42 @@ if ($pg) {
 
         case 'produtos-item':
 
-            
+
             $id = $_GET['id'];
 
             $resultDadosTabProdutos = new Conexao();
-            $dados = $resultDadosTabProdutos->selecionaDados('SELECT * FROM produtos WHERE id = '.$id);
+            $dados = $resultDadosTabProdutos->selecionaDados('SELECT * FROM produtos WHERE id = ' . $id);
 
             include_once 'painel/paginas/includes/header.php';
             include_once 'painel/paginas/includes/menus.php';
             include_once 'painel/paginas/produtos-item.php';
             include_once 'painel/paginas/includes/footer.php';
-            
+
+            break;
+
+
+        case 'produtos-editar':
+
+            include_once 'painel/paginas/includes/header.php';
+            include_once 'painel/paginas/includes/menus.php';
+
+            if ($_SERVER['REQUEST_METHOD'] == 'post') {
+                //Função para atualização do produto
+            } else {
+                //mostrar os dados do produto
+                $idProdutoEditar = isset($_GET ['id']);
+
+               //se for verdadeiro
+     
+                if ($idProdutoEditar) {
+                    $resultDadosTabProdutos = new Conexao();
+                    $dados = $resultDadosTabProdutos->selecionaDados('SELECT * FROM produtos WHERE id = ' . $idProdutoEditar);
+                    include_once 'painel/paginas/produtos-editar.php';
+                    //se for falso    
+                }
+            }
+            include_once 'painel/paginas/includes/footer.php';
+
             break;
 
         case 'serviços':
@@ -62,18 +87,18 @@ if ($pg) {
             include_once 'painel/paginas/includes/footer.php';
             break;
 
-         case 'servicos-lista':
-            
+        case 'servicos-lista':
+
             $id = $_GET['id'];
 
             $resultDadosTabmsg = new Conexao();
-            $dados = $resultDadosTabmsg->selecionaDados('SELECT * FROM servicos WHERE id = '.$id);
-            
+            $dados = $resultDadosTabmsg->selecionaDados('SELECT * FROM servicos WHERE id = ' . $id);
+
             include_once 'painel/paginas/includes/header.php';
             include_once 'painel/paginas/includes/menus.php';
             include_once 'painel/paginas/servicos-lista.php';
             include_once 'painel/paginas/includes/footer.php';
-        
+
         case 'Contato':
 
             //            fazer uma consulta no banco e disponibilizar os resultados
@@ -88,19 +113,19 @@ if ($pg) {
             break;
 
         case 'contato-visualizar':
-            
+
             $id = $_GET['id'];
 
             $resultDadosTabmsg = new Conexao();
-            $dados = $resultDadosTabmsg->selecionaDados('SELECT * FROM contato WHERE id = '.$id);
-            
+            $dados = $resultDadosTabmsg->selecionaDados('SELECT * FROM contato WHERE id = ' . $id);
+
             include_once 'painel/paginas/includes/header.php';
             include_once 'painel/paginas/includes/menus.php';
             include_once 'painel/paginas/contato-visualizar.php';
             include_once 'painel/paginas/includes/footer.php';
-            
+
             break;
-        
+
         case 'login':
             include_once 'painel/paginas/acesso/login.php';
             break;
