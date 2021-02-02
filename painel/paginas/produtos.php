@@ -1,4 +1,7 @@
-<!-- Content Wrapper. Contains page content -->
+<?php
+$resultDadosTabProdutos = new Conexao();
+$dados = $resultDadosTabProdutos->selecionaDados('SELECT * FROM produtos');
+?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -27,7 +30,8 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title"><a href="?pg=produtos-inserir" class="btn btn-success btn-lg">
+                                    <span class="fa fa-plus"> </span>Novo produto</a></h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -56,9 +60,9 @@
                                                 <!--visulizar-->
                                                 <a href="?pg=produtos-item&id=<?php echo $dado['id']; ?>" class=" btn btn-outline-success"><Span class="fa fa-eye"></Span></a>
                                                 <!-- Editar-->
-                                                <a href="?pg=produtos-editar&id=<?php echo $dado['id'];?>" class=" btn btn-outline-warning"><Span class="fa fa-edit"></Span></a>
+                                                <a href="?pg=produtos-editar&id=<?php echo $dado['id']; ?>" class=" btn btn-outline-warning"><Span class="fa fa-edit"></Span></a>
                                                 <!-- Apagar-->
-                                                <a href="#"class=" btn btn-outline-danger"><Span class="fa fa-trash"></Span></a>
+                                                <a href="?pg=produtos-excluir&id=<?php echo $dado['id']; ?>" class=" btn btn-outline-danger"><Span class="fa fa-trash"></Span></a>
 
                                             </td>
                                         </tr>
